@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Input, Button, Checkbox, Card, Alert, notification } from 'antd';
 import api from '../../utils/api';
 import { useNavigate } from 'react-router';
+import { useSelector } from 'react-redux';
 const layout = {
   labelCol: {
     span: 8,
@@ -18,6 +19,8 @@ const tailLayout = {
 };
 
 const Register = () => {
+    const user = useSelector(state => state.user)
+
     const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
@@ -42,7 +45,16 @@ const Register = () => {
         console.log('Failed:', errorInfo);
     };
     
-    
+    useEffect(() => {
+        if(user._id) {
+            notification['success']({
+                message: "You have already logged in!"
+            })
+            setTimeout(() => {
+                navigate('/');
+            },1000)
+        }
+    },[user])
 
     return (
         <Card title="Register" style={{width: "50%", margin: "auto"}}>

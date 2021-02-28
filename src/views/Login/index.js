@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Input, Button, Checkbox, Card, notification } from 'antd';
 import api from '../../utils/api';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { authSuccess } from '../../redux/actions/User';
 import { useNavigate } from 'react-router';
 const layout = {
@@ -20,6 +20,7 @@ const tailLayout = {
 };
 
 const Login = () => {
+    const user = useSelector(state => state.user)
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -49,7 +50,16 @@ const Login = () => {
         console.log('Failed:', errorInfo);
     };
     
-    
+    useEffect(() => {
+        if(user._id) {
+            notification['success']({
+                message: "You have already logged in!"
+            })
+            setTimeout(() => {
+                navigate('/');
+            },1000)
+        }
+    },[user])
 
     return (
         <Card className="login-card" title="Login" style={{width: "50%", margin: "auto"}}>
