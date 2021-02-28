@@ -1,24 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import 'antd/dist/antd.css';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import { useRoutes } from 'react-router-dom';
+import routes from './routes';
 
-function App() {
+const App = () => {
+  const routing = useRoutes(routes);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      {routing}
+    </Provider>
   );
 }
 
