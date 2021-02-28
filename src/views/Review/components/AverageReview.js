@@ -38,10 +38,10 @@ const AverageReview = (props) => {
   return (
     <Card title="Average" style={{ width: '100%' }}>
       <Row>
-        <Col span={12} style={{paddingTop: '5px'}}>
-            Vists on SafeShopping
+        <Col span={23} style={{paddingTop: '5px'}}>
+            Vists on {shop.domain}
         </Col>
-        <Col span={12} style={{paddingTop: '5px'}}>
+        <Col span={1} style={{paddingTop: '5px'}}>
             {shop.visited}
         </Col>
       </Row>
