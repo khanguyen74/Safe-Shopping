@@ -27,7 +27,7 @@ const Login = () => {
     
 
     return (
-        <Card title="Login" style={{width: "50%", margin: "auto"}}>
+        <Card className="login-card" title="Login" style={{width: "50%", margin: "auto"}}>
             <Form
             {...layout}
             name="basic"

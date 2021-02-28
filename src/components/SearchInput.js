@@ -6,7 +6,7 @@ const { Search } = Input;
 const SearchInput = () => {
 
   return (
-    <Search placeholder="Input an e-commerce website url" enterButton size="large" />
+    <Search placeholder="safeshopping.com" enterButton size="large" />
   );
 };
 

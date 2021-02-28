@@ -17,10 +17,10 @@ const MainLayout = () => {
                 <Menu.Item key="1" style={{fontSize: "1.2rem", color: "white"}}>Safe Shopping</Menu.Item>
                 <Menu.Item key="2" style={{float: "right"}}>Sign Up</Menu.Item>
                 <Menu.Item key="3" style={{float: "right"}}>Sign In</Menu.Item>
-                <Menu.Item key="3" style={{float: "right"}}>Nyan Nguyen</Menu.Item>
+                <Menu.Item key="4" style={{float: "right"}}>Nyan Nguyen</Menu.Item>
             </Menu>
         </Header>
-        <Content style={{padding: '20px 50px'}}>
+        <Content id="layout" style={{padding: '20px 50px'}}>
             <div className="site-layout-content">
                 <Outlet/>
             </div>

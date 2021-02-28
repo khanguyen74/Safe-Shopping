@@ -40,3 +40,30 @@
 .ant-layout-content {
   min-height: calc(100vh - 64px) !important;
 }
+
+
+#layout{
+  background: rgb(128,117,0);
+  background: linear-gradient(0deg, rgba(128,117,0,1) 0%, rgba(141,135,65,0.95) 41%, rgba(101,157,189,0.5) 100%),
+  url(https://images.unsplash.com/photo-1508389377389-b8221c0bcc9e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+  background-size: cover;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-card{
+  background-color: rgba(93, 197, 255,0.4) !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+.login-card .ant-card-head-title{
+  font-size: 1.3rem;
+  color: white;
+}
+
+.ant-card-head{
+  border-color: rgba(255, 255, 255, 0.3) !important;
+
+}
