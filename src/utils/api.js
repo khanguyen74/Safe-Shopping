@@ -17,6 +17,7 @@ const api = {
     createReview: (params) => instance.post("/review/create", params),
     getReviews: (params) => instance.get("/review/get/"+params.shopId),
     getReviewsAverage: (params) => instance.get("/review/get-average/"+params.shopId),
+    getHiddenElement: (params) => instance.get("/hidden-url/"+params.domain),
     register: (params) => instance.post("/user/register", params),
 }
 

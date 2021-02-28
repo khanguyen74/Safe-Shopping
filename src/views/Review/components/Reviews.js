@@ -26,9 +26,8 @@ const Reviews = (props) => {
       }
       
         {reviews.map(review => (
-          <Card style={{marginBottom: "20px"}}>
+          <Card key={review._id} style={{marginBottom: "20px"}}>
             <Comment
-              key={review._id}
               author={<a>{review.userId.firstname+" "+review.userId.lastname}</a>}
               avatar={
                 <Avatar
