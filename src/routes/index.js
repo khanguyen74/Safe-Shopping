@@ -9,7 +9,7 @@ const routes = [
         path: '/',
         element: <MainLayout/>,
         children: [
-            { path: '/review/:shopId' , element: <Review/>},
+            { path: '/review/:domain' , element: <Review/>},
             { path: '/login' , element: <Login/>},
             { path: '/register' , element: <Register/>},
             { path: '/' , element: <Landing/>}

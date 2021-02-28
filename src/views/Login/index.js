@@ -1,5 +1,9 @@
 import React from 'react';
-import { Form, Input, Button, Checkbox, Card } from 'antd';
+import { Form, Input, Button, Checkbox, Card, notification } from 'antd';
+import api from '../../utils/api';
+import { useDispatch } from 'react-redux';
+import { authSuccess } from '../../redux/actions/User';
+import { useNavigate } from 'react-router';
 const layout = {
   labelCol: {
     span: 8,
@@ -16,8 +20,29 @@ const tailLayout = {
 };
 
 const Login = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+
     const onFinish = (values) => {
         console.log('Success:', values);
+        api.login(values).then(response => {
+            notification['success']({
+                message: "Login success!"
+            })
+            dispatch(authSuccess(response.data));
+
+            setTimeout(() => {
+                navigate(-1);
+            },1000)
+
+            console.log(response.data);
+        }).catch(error => {
+            const errorMessage = JSON.parse(error.request.response)
+            notification['error']({
+                message: "Error occurred!",
+                description: errorMessage.email?errorMessage.email:errorMessage.password
+            })
+        })
     };
 
     const onFinishFailed = (errorInfo) => {

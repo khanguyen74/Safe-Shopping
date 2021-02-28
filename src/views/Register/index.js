@@ -1,5 +1,7 @@
-import React from 'react';
-import { Form, Input, Button, Checkbox, Card } from 'antd';
+import React, { useState } from 'react';
+import { Form, Input, Button, Checkbox, Card, Alert, notification } from 'antd';
+import api from '../../utils/api';
+import { useNavigate } from 'react-router';
 const layout = {
   labelCol: {
     span: 8,
@@ -16,8 +18,24 @@ const tailLayout = {
 };
 
 const Register = () => {
+    const [errors, setErrors] = useState({});
+    const navigate = useNavigate();
+
     const onFinish = (values) => {
-        console.log('Success:', values);
+        api.register(values).then(response => {
+            notification['success']({
+                message: "Register success!",
+                description: "Please login to continue!"
+            });
+
+            setTimeout(() => {
+                navigate("/login",{replace: true});
+            },3000)
+        }).catch(error => {
+            const errorMessage = JSON.parse(error.request.response)
+            console.log(errorMessage);
+            setErrors(errorMessage);
+        })
     };
 
     const onFinishFailed = (errorInfo) => {
@@ -28,6 +46,16 @@ const Register = () => {
 
     return (
         <Card title="Register" style={{width: "50%", margin: "auto"}}>
+            {Object.keys(errors).length?
+                <Alert
+                    style={{marginBottom: "30px"}}
+                    message="Error!"
+                    description={
+                        Object.keys(errors).map(err => <p key={err}>{errors[err]}</p>)
+                    }
+                    type="error"
+                />
+            :null}
             <Form
             {...layout}
             name="basic"
@@ -89,7 +117,7 @@ const Register = () => {
 
                 <Form.Item
                     label="Confirm Password"
-                    name="password"
+                    name="password_confirm"
                     rules={[
                     {
                         required: true,
