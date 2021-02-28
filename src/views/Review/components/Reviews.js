@@ -43,7 +43,7 @@ const Reviews = (props) => {
                   <Divider orientation="left"></Divider>
                   <Row>
                       <Col span={12} style={{paddingTop: '5px'}}>
-                          General
+                          Overall
                       </Col>
                       <Col span={12}>
                       <span>

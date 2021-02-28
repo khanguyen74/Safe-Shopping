@@ -4,6 +4,8 @@ import api from '../../../utils/api';
 
 const AverageReview = (props) => {
   const {shop,refreshReviews} = props;
+  console.log(shop);
+
   const [average, setAverage] = useState({
     general : {
       count: 0,
@@ -38,10 +40,10 @@ const AverageReview = (props) => {
   return (
     <Card title="Average" style={{ width: '100%' }}>
       <Row>
-        <Col span={12} style={{paddingTop: '5px'}}>
-            Vists on SafeShopping
+        <Col span={23} style={{paddingTop: '5px'}}>
+            Visits on {shop.domain} review page
         </Col>
-        <Col span={12} style={{paddingTop: '5px'}}>
+        <Col span={1} style={{paddingTop: '5px'}}>
             {shop.visited}
         </Col>
       </Row>
